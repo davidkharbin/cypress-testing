@@ -26,14 +26,41 @@ describe('general-tests-TodoMVC-JS-React', () => {
   it('Main and footer sections show after adding a todo', () => {
     cy.get('.new-todo')
       .type('adding todo item!{enter}')
-    
+
     cy.get('.footer').should('exist')
     cy.get('.main').should('exist')
   })
 
-  it('Adds a todo', () => { })
+  it('Adds a todo', () => {
+    let item = 'adding todo item!'
+    let li = 'ul.todo-list li'
 
-  it('Adds three todos', () => { })
+    cy.get('.new-todo')
+      .type(`${item}{enter}`)
 
-  it('Trims todo whitespace', () => { })
+    cy.get(`${li}`).should('have.length', 1)
+  })
+
+  it('Adds three todos', () => {
+    let item = 'adding todo item!'
+    let li = 'ul.todo-list li'
+
+    cy.get('.new-todo')
+      .type(`${item}{enter}`)
+      .type(`${item}{enter}`)
+      .type(`${item}{enter}`)
+
+    cy.get(`${li}`).should('have.length', 3)
+  })
+
+  it('Trims todo whitespace', () => {
+    let item = '  adding padded todo item !   '
+    let li = 'ul.todo-list li'
+    let trimmed = 'adding padded todo item !'
+
+    cy.get('.new-todo')
+      .type(`${item}{enter}`)
+
+    cy.get(`${li} input.edit`).should('have.value', trimmed)
+  })
 })

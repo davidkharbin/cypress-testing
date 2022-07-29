@@ -8,15 +8,26 @@ describe('general-tests-TodoMVC-JS-React', () => {
     cy.get('.main').should('not.exist')
   })
 
-  it('On page load, focus is on the todo input field'), () => { }
+  it('On page load, focus is on the todo input field', () => {
+    cy.get('body').
+      find('input')
+      .should('have.focus')
+      .and('have.class', 'new-todo')
+  })
 
-  it('Adding a todo clears the text input field'), () => { }
+  it('Adding a todo clears the text input field', () => {
+    cy.get('.new-todo')
+      .type('todo item number one!{enter}')
 
-  it('Main and footer sectoins show after adding a todo'), () => { }
+    cy.get('input')
+      .should('have.value', '')
+  })
 
-  it('Adds a todo'), () => { }
+  it('Main and footer sections show after adding a todo', () => { })
 
-  it('Addds three todos'), () => { }
+  it('Adds a todo', () => { })
 
-  it('Trims todo whitespace'), () => { }
+  it('Adds three todos', () => { })
+
+  it('Trims todo whitespace', () => { })
 })

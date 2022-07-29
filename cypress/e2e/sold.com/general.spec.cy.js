@@ -23,7 +23,13 @@ describe('general-tests-TodoMVC-JS-React', () => {
       .should('have.value', '')
   })
 
-  it('Main and footer sections show after adding a todo', () => { })
+  it('Main and footer sections show after adding a todo', () => {
+    cy.get('.new-todo')
+      .type('adding todo item!{enter}')
+    
+    cy.get('.footer').should('exist')
+    cy.get('.main').should('exist')
+  })
 
   it('Adds a todo', () => { })
 

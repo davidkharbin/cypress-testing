@@ -1,4 +1,4 @@
-describe('react-todomvc', () => {
+describe('general-tests-TodoMVC-JS-React', () => {
   beforeEach(() => {
     cy.visit('http://0.0.0.0:8000')
   })
